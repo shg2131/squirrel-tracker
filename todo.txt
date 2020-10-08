@@ -1,0 +1,4 @@
+- Save Django secret key as an env variable
+- Import command should actually translate csv into Django models (called SquirrelSightings)
+- Implement SquirrelSightings class in squirrel/models.py
+- Export command should export all SquirrelSightings objects into a csv.
