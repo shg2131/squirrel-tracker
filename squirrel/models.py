@@ -33,23 +33,23 @@ class SquirrelSighting(models.Model):
         default=BLANK,
     )
 
-    specific_location = TextField(blank=True)
+    specific_location = models.TextField(blank=True)
 
-    running = BooleanField(default=False)
-    chasing = BooleanField(default=False)
-    climbing = BooleanField(default=False)
-    eating = BooleanField(default=False)
-    foraging = BooleanField(default=False)
-    other_activities = TextField(blank=True)
+    running = models.BooleanField(default=False)
+    chasing = models.BooleanField(default=False)
+    climbing = models.BooleanField(default=False)
+    eating = models.BooleanField(default=False)
+    foraging = models.BooleanField(default=False)
+    other_activities = models.TextField(blank=True)
 
-    kuks = BooleanField(default=False)
-    quaas = BooleanField(default=False)
-    moans = BooleanField(default=False)
-    tail_flags = BooleanField(default=False)
-    tail_twitches = BooleanField(default=False)
-    approaches = BooleanField(default=False)
-    indifferent = BooleanField(default=False)
-    runs_from = BooleanField(default=False)
+    kuks = models.BooleanField(default=False)
+    quaas = models.BooleanField(default=False)
+    moans = models.BooleanField(default=False)
+    tail_flags = models.BooleanField(default=False)
+    tail_twitches = models.BooleanField(default=False)
+    approaches = models.BooleanField(default=False)
+    indifferent = models.BooleanField(default=False)
+    runs_from = models.BooleanField(default=False)
 
 
 
