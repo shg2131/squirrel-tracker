@@ -11,14 +11,43 @@ class SquirrelSighting(models.Model):
     )
 
     unique_squirrel_id = models.CharField(max_length=50)
-    shift = models.CharField(max_length=2)
+
+    AM = 'AM'
+    PM = 'PM'
+    BLANK = ''
+
+    SHIFT_CHOICES = [
+        (AM, 'AM'),
+        (PM, 'PM'),
+    ]
+
+    shift = models.CharField(
+        max_length=50,
+        choices=SHIFT_CHOICES,
+        default=PM,
+    )
+    
     date = models.DateField()
-    age = models.IntegerField()
+    
+    ADULT = 'Adult'
+    JUVENILE = 'Juvenile'
+    
+    AGE_CHOICES = [
+        (ADULT, 'Adult'),
+        (JUVENILE, 'Juvenile'),
+        (BLANK, ''),
+    ]
+
+    age = models.CharField(
+        max_length=50,
+        choices=AGE_CHOICES,
+        default=BLANK,
+    )
+
     primary_fur_color = models.CharField(max_length=50, blank=True)
     
-    GROUND = 'ground plane'
-    ABOVE = 'above ground'
-    BLANK = ''
+    GROUND = 'Ground Plane'
+    ABOVE = 'Above Ground'
 
     LOCATION_CHOICES = [
         (GROUND, 'Ground Plane'),
@@ -51,6 +80,7 @@ class SquirrelSighting(models.Model):
     indifferent = models.BooleanField(default=False)
     runs_from = models.BooleanField(default=False)
 
-
+    def __str__(self):
+        return self.unique_squirrel_id
 
 
