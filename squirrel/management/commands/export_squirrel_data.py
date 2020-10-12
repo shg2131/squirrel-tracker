@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand
 
-import pandas as pd
+from squirrel.models import SquirrelSighting
+
+import csv
 
 class Command(BaseCommand):
     help = 'Exports squirrel data to a given file path'
@@ -15,7 +17,34 @@ class Command(BaseCommand):
             )
             return 
         path = options['path'][0]
-        data = pd.DataFrame() # not sure exactly what data we're supposed to export??
-        data.to_csv(path)
+        with open(path, 'w') as fp:
+            writer = csv.writer(fp)
+            keys = ['longitude',
+                    'latitude',
+                    'unique_squirrel_id',
+                    'shift',
+                    'date',
+                    'age',
+                    'primary_fur_color',
+                    'location',
+                    'specific_location',
+                    'running',
+                    'chasing',
+                    'climbing',
+                    'eating',
+                    'foraging',
+                    'other_activities',
+                    'kuks',
+                    'quaas',
+                    'moans',
+                    'tail_flags',
+                    'tail_twitches',
+                    'approaches',
+                    'indifferent',
+                    'runs_from',
+                   ]
+            writer.writerow(keys)
+            for obj in SquirrelSighting.objects.all():
+                writer.writerow([obj.__dict__[key] for key in keys])
 
         self.stdout.write(self.style.SUCCESS(f'Successfully exported squirrel data to {path}!'))
