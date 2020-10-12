@@ -53,7 +53,9 @@
 
         {% for sighting in sightings %}
           var point_lat_lon = [{{ sighting.latitude }}, {{ sighting.longitude }}];
-          var marker = L.marker(point_lat_lon).addTo(map);
+	  var marker = L.marker(point_lat_lon)
+			.bindPopup("Date: {{ sighting.date }}<br>Shift: {{ sighting.shift }}")
+			.addTo(map);
         {% endfor %}
     </script>
   </body>

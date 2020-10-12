@@ -15,7 +15,8 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.ERROR(f'Usage: python manage.py export_squirrel_data /path/to/file.csv')
             )
-            return 
+            return
+
         path = options['path'][0]
         with open(path, 'w') as fp:
             writer = csv.writer(fp)
@@ -44,6 +45,7 @@ class Command(BaseCommand):
                     'runs_from',
                    ]
             writer.writerow(keys)
+        
             for obj in SquirrelSighting.objects.all():
                 writer.writerow([obj.__dict__[key] for key in keys])
 
