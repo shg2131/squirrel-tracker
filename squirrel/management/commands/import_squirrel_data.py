@@ -28,7 +28,7 @@ class Command(BaseCommand):
             str_to_bool = lambda x: (True if x.lower() == 'true' else False) 
             
             for row in reader:
-                _, created = SquirrelSighting.objects.get_or_create(
+                sighting = SquirrelSighting(
                     longitude=float(row[0]),
                     latitude=float(row[1]),
                     unique_squirrel_id=row[2],
@@ -52,6 +52,16 @@ class Command(BaseCommand):
                     approaches=str_to_bool(row[26]),
                     indifferent=str_to_bool(row[27]),
                     runs_from=str_to_bool(row[28]),
+                    uid=row[2],
                 )
+                
+                unique_id_count = SquirrelSighting.objects.filter(
+                    unique_squirrel_id=sighting.unique_squirrel_id
+                ).count()
+                
+                if unique_id_count > 0:
+                    sighting.uid = sighting.unique_squirrel_id + f'-{unique_id_count}'
+
+                sighting.save()
 
         self.stdout.write(self.style.SUCCESS(f'Successfully imported squirrel data from {path}!'))

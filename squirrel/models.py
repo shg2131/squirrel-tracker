@@ -35,13 +35,13 @@ class SquirrelSighting(models.Model):
     AGE_CHOICES = [
         (ADULT, 'Adult'),
         (JUVENILE, 'Juvenile'),
-        (BLANK, ''),
+        #(BLANK, ''),
     ]
 
     age = models.CharField(
         max_length=50,
         choices=AGE_CHOICES,
-        default=BLANK,
+        default=ADULT,
     )
 
     primary_fur_color = models.CharField(max_length=50, blank=True)
@@ -79,6 +79,9 @@ class SquirrelSighting(models.Model):
     approaches = models.BooleanField(default=False)
     indifferent = models.BooleanField(default=False)
     runs_from = models.BooleanField(default=False)
+    
+    # To deal with duplicated unique squirrel ids in dataset
+    uid = models.CharField(max_length=50) 
 
     def __str__(self):
         return self.unique_squirrel_id
