@@ -54,7 +54,11 @@
         {% for sighting in sightings %}
           var point_lat_lon = [{{ sighting.latitude }}, {{ sighting.longitude }}];
 	  var marker = L.marker(point_lat_lon)
-			.bindPopup("Date: {{ sighting.date }}<br>Shift: {{ sighting.shift }}")
+			.bindPopup("\
+				Date: {{ sighting.date }}<br> \
+				Shift: {{ sighting.shift }}<br> \
+				Unique Squirrel ID: {{ sighting.unique_squirrel_id }} \
+			")
 			.addTo(map);
         {% endfor %}
     </script>
