@@ -81,7 +81,7 @@ class SquirrelSighting(models.Model):
     runs_from = models.BooleanField(default=False)
     
     # To deal with duplicated unique squirrel ids in dataset
-    uid = models.CharField(max_length=50) 
+    uid = models.CharField(max_length=50, unique=True) 
 
     def __str__(self):
         return self.unique_squirrel_id
