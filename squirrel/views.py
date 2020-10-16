@@ -25,15 +25,19 @@ class SightingsListView(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
-
-class SightingsDetailView(DetailView):
-    model = SquirrelSighting
-
-
 def sightings_detail(request, unique_squirrel_id):
-    sighting = SquirrelSighting.objects.filter(unique_squirrel_id=unique_squirrel_id)[0]
-    print(sighting.unique_squirrel_id)
+    print(unique_squirrel_id)
+    sightings_qs = SquirrelSighting.objects.filter(unique_squirrel_id=unique_squirrel_id)
+    if len(sightings_qs) == 0:
+        return
     context = {
-        'sighting': sighting,
+        'sighting': sightings_qs[0],
     }
     return render(request, 'squirrel/squirrelsighting_detail.html', context)
+
+def stats(request):
+    sightings = SquirrelSighting.objects.all()
+    context = {
+        'sightings': sightings,
+    }
+    return render(request, 'squirrel/stats.html', context)
