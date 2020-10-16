@@ -1,8 +1,38 @@
-<h1>Squirrels</h1>
-<ul>
-{% for squirrel in object_list %}
-    <li>{{ squirrel.unique_squirrel_id }} - {{ squirrel.date }}</li>
-{% empty %}
-    <li>No articles yet.</li>
-{% endfor %}
-</ul>
+</h>Squirrel Sightings</h>
+<table class="table table-bordered">
+ <thead>
+	<tr>
+		<th>Squirrel Unique ID</th>
+     		<th>Date</th>
+      		<th>Link to squirrel sightings</th>
+    	</tr>
+</thead>
+<tbody>
+	{% for squirrel in object_list %}
+	<tr>
+       		 <td>{{ squirrel.unique_squirrel_id }}</td>
+       		 <td>{{ squirrel.date }}</td>
+		 <td><a href="{% url 'squirrel:sightings-detail' squirrel.pk %}">View Details</a></td>
+	</tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
