@@ -1,0 +1,27 @@
+{% extends 'squirrel/base.html' %}
+  
+{% load static %}
+
+{% block title %} Add Sighting {% endblock %}
+
+{% block main %}
+ 
+<html>
+  <body>
+    	<form action="{% url 'squirrel:add' %}" method="POST">
+      		{% csrf_token %}
+      		<div class="container">
+   				<div class="row">
+				<div class="col-m-6">
+    				{% for field in form  %} 
+        				<li> {{ field.label_tag }} :  {{ field }} </li> 
+    				{% endfor %}
+				</div>
+   			 	</div>  
+  			</div>
+	<button class="button" type="submit">Add</button>
+	</form>
+  </body>
+</html>
+
+{% endblock main %}

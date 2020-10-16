@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
-from squirrel.models import SquirrelSighting
+from django.http import JsonResponse
+from .models import SquirrelSighting
+from .forms import AddSightingForm
 
 import random
 
@@ -26,10 +27,6 @@ class SightingsListView(ListView):
         return context
 
 
-class SightingsDetailView(DetailView):
-    model = SquirrelSighting
-
-
 def sightings_detail(request, unique_squirrel_id):
     sighting = SquirrelSighting.objects.filter(unique_squirrel_id=unique_squirrel_id)[0]
     print(sighting.unique_squirrel_id)
@@ -37,3 +34,19 @@ def sightings_detail(request, unique_squirrel_id):
         'sighting': sighting,
     }
     return render(request, 'squirrel/squirrelsighting_detail.html', context)
+
+
+def add_sighting(request):
+    if request.method == 'POST':
+        form = AddSightingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/sightings/')
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+    else:
+        form = AddSightingForm()
+        context = {
+            'form': form,
+            }
+        return render(request, 'squirrel/add.html', context)
