@@ -52,19 +52,12 @@ class Command(BaseCommand):
                     approaches=str_to_bool(row[26]),
                     indifferent=str_to_bool(row[27]),
                     runs_from=str_to_bool(row[28]),
-                    uid=row[2],
                 )
-                
-                unique_id_count = SquirrelSighting.objects.filter(
+                 
+                usid_count = SquirrelSighting.objects.filter(
                     unique_squirrel_id=sighting.unique_squirrel_id
                 ).count()
-                if unique_id_count > 0:
-                    sighting.uid = sighting.unique_squirrel_id + f'-{unique_id_count}'
-                
-                uid_count = SquirrelSighting.objects.filter(
-                    uid=sighting.uid
-                ).count()
-                if uid_count > 0:
+                if usid_count > 0:
                     continue
 
                 sighting.save()
