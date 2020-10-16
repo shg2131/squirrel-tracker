@@ -20,20 +20,17 @@
     <link href="https://getbootstrap.com/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{% url 'squirrel:index' %}">Squirrel Tracker</a>
-      <ul class="navbar-nav px-3">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'squirrel:map' %}">
-                  <span data-feather="map"></span>
-                </a>
-        </li>
-                 <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                </a>
-              </li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
+  	<div  class="collapse navbar-collapse" id="navbarNavAltMarkup"> 
+		 <div class="navbar-nav">
+
+      <a class="nav-item nav-link" href="{% url 'squirrel:index' %}">Squirrel Tracker</a>
+      <a class="nav-item nav-link active" href="{% url 'squirrel:sightings-list' %}">Sightings List<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="{% url 'squirrel:map' %}">Map</a>
+      <a class="nav-item nav-link disabled" href="#">Add</a>
+    </div>
+	</div>
+  
     </nav>
     <div class="container-fluid">
 	   <div class="row">
