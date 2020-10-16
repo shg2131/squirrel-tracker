@@ -58,9 +58,14 @@ class Command(BaseCommand):
                 unique_id_count = SquirrelSighting.objects.filter(
                     unique_squirrel_id=sighting.unique_squirrel_id
                 ).count()
-                
                 if unique_id_count > 0:
                     sighting.uid = sighting.unique_squirrel_id + f'-{unique_id_count}'
+                
+                uid_count = SquirrelSighting.objects.filter(
+                    uid=sighting.uid
+                ).count()
+                if uid_count > 0:
+                    continue
 
                 sighting.save()
 
