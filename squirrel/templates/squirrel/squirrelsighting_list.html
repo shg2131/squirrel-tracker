@@ -11,8 +11,7 @@
             <h1 class="h2">Sightings List</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-        	<button class="btn btn-sm btn-outline-secondary">Add</button>
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
+        	<button class="btn btn-sm btn-outline-secondary">Add Sighting</button>
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                 <span data-feather="calendar"></span>
@@ -28,7 +27,7 @@
                 <tr style="height:40px">
                   <th>Unique Squirrel ID</th>
                   <th>Date</th>
-                  <th>View Details</th>
+                  <th>Update Sighting</th>
                 </tr>
               </thead>
               <tbody>
@@ -36,7 +35,7 @@
         		<tr style="height:40px">
                  	<td>{{ squirrel.unique_squirrel_id }}</td>
                  	<td>{{ squirrel.date }}</td>
-                 	<td><a href="{% url 'squirrel:sightings-detail' squirrel.pk %}">View Details</a></td>
+                 	<td><a href="{% url 'squirrel:sightings-detail' squirrel.unique_squirrel_id %}">Update</a></td>
         		</tr>
     		{% endfor %}
               </tbody>
