@@ -8,18 +8,19 @@
  
 <html>
   <body>
-    	<form action="{% url 'squirrel:add' %}" method="POST">
+	 <h2> Add a Squirrel Sighting </h2>
+	<form action="{% url 'squirrel:add' %}" method="POST">
       		{% csrf_token %}
       		<div class="container">
    				<div class="row">
 				<div class="col-m-6">
     				{% for field in form  %} 
-        				<li> {{ field.label_tag }} :  {{ field }} </li> 
+        				<li> {{ field.label_tag }}   {{ field }} </li> 
     				{% endfor %}
 				</div>
    			 	</div>  
   			</div>
-	<button class="button" type="submit">Add</button>
+			<button class="button" type="submit">Add</button>
 	</form>
   </body>
 </html>
