@@ -7,4 +7,5 @@ app_name = 'squirrel'
 urlpatterns = [
     path('', views.index, name='index'),
     path('map/', views.map, name='map'),
+    path('sightings/', views.SightingsListView.as_view(), name='sightings-list'),
 ]

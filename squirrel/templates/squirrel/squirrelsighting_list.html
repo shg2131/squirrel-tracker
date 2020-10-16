@@ -1,0 +1,8 @@
+<h1>Squirrels</h1>
+<ul>
+{% for squirrel in object_list %}
+    <li>{{ squirrel.unique_squirrel_id }} - {{ squirrel.date }}</li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
