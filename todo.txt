@@ -1,6 +1,5 @@
 - Save Django secret key as an env variable
-- Stats page
 - Banner on top of map (make map.html extend base.html)
 - Split sightings list into pages?
-- Forms for add and update
+- Form for update
 
