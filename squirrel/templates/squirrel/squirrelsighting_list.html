@@ -10,10 +10,17 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Sightings List</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-1">
-        	<a class="btn btn-sm btn-outline-secondary" href="{% url 'squirrel:add' %}" role="button">Add Sighting</a>
+              <div class="btn-group mr-2">
+        	<button class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'squirrel:add' %}'">
+		  <span data-feather="plus"></span>
+   		  Add Sighting
+	        </button>
+		<button class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'squirrel:stats' %}'">
+                  <span data-feather="bar-chart-2"></span>
+                  Stats
+                </button>
               </div>
-             </div>
+            </div>
           </div>
 
   

@@ -1,0 +1,67 @@
+{% extends 'squirrel/base.html' %}
+
+{% load static %}
+
+{% block title %} Sightings Stats {% endblock %}
+
+{% block main %}
+
+<html>
+  <body>
+    <p>Total Sightings: {{ num_sightings }}</p>
+    <p>Average Daily Sightings: {{ avg_per_day }}</p>
+    <p>Average Coordinates: ({{ avg_lat }}, {{ avg_long }})</p>
+    <p>
+     <h2>Breakdown by Age</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Age</th>
+              <th>Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Adult</td>
+	      <td>{{ adult_num }}</td>
+            </tr>
+	    <tr>
+              <td>Juvenile</td>
+              <td>{{ juvenile_num }}</td>
+            </tr>
+	    <tr>
+              <td>N/A</td>
+              <td>{{ other_num }}</td>
+            </tr>
+	  </tbody>
+        </table>
+      </div>
+    </p>
+    <p>
+     <h2>Breakdown by Shift</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Shift</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AM</td>
+              <td>{{ am_pct }}%</td>
+            </tr>
+            <tr>
+              <td>PM</td>
+              <td>{{ pm_pct }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </p>
+  </body>
+</html>
+
+{% endblock %}
