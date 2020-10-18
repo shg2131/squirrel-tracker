@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import JsonResponse
+
 from .models import SquirrelSighting
-from .forms import AddSightingForm
+from .forms import SightingForm
 
 import random
 
@@ -75,15 +77,22 @@ def stats(request):
 
 def add_sighting(request):
     if request.method == 'POST':
-        form = AddSightingForm(request.POST)
+        form = SightingForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/sightings/')
         else:
             return JsonResponse({'errors': form.errors}, status=400)
     else:
-        form = AddSightingForm()
+        form = SightingForm()
         context = {
             'form': form,
             }
         return render(request, 'squirrel/add.html', context)
+
+
+class SightingUpdateView(UpdateView):
+    model = SquirrelSighting
+    form_class = SightingForm
+    success_url = '/sightings/'
+    

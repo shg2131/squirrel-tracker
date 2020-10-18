@@ -1,0 +1,22 @@
+{% extends 'squirrel/base.html' %}
+  
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %} Update Sighting {% endblock %}
+
+{% block main %}
+
+<html>
+  <body>
+        <h2> Update a  Squirrel Sighting </h2>
+        <hr>
+        <form method="POST">
+                {% csrf_token %}
+                {% crispy form %}            
+        </form>
+  </body>
+</html>
+
+{% endblock main %}

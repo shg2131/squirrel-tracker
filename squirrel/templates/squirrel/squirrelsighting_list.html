@@ -38,7 +38,7 @@
         		<tr style="height:40px">
                  	<td>{{ squirrel.unique_squirrel_id }}</td>
                  	<td>{{ squirrel.date }}</td>
-                 	<td><a href="{% url 'squirrel:sightings-detail' squirrel.unique_squirrel_id %}">Update</a></td>
+                 	<td><a href="{% url 'squirrel:update' squirrel.unique_squirrel_id %}">Update</a></td>
         		</tr>
     		{% endfor %}
               </tbody>

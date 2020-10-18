@@ -1,5 +1,7 @@
 {% extends 'squirrel/base.html' %}
   
+{% load crispy_forms_tags %}
+
 {% load static %}
 
 {% block title %} Add Sighting {% endblock %}
@@ -8,19 +10,12 @@
  
 <html>
   <body>
-	 <h2> Add a Squirrel Sighting </h2>
+	<h2> Add a Squirrel Sighting </h2>
+	<hr>
 	<form action="{% url 'squirrel:add' %}" method="POST">
       		{% csrf_token %}
-      		<div class="container">
-   				<div class="row">
-				<div class="col-m-6">
-    				{% for field in form  %} 
-        				<li> {{ field.label_tag }}   {{ field }} </li> 
-    				{% endfor %}
-				</div>
-   			 	</div>  
-  			</div>
-			<button class="button" type="submit">Add</button>
+    		{{ form|crispy }}
+	<button class="button" type="submit">Add Sighting</button>
 	</form>
   </body>
 </html>
