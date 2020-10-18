@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -90,9 +90,26 @@ def add_sighting(request):
             }
         return render(request, 'squirrel/add.html', context)
 
+def update_sighting(request, **kwargs):
+    sighting = SquirrelSighting.objects.filter(unique_squirrel_id=kwargs['unique_squirrel_id']).first()
+    if request.method == 'POST':
+        form = SightingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/sightings/')
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+    else:
+        form = SightingForm()
+        context = {
+            'form': form,
+            }
+        return render(request, 'squirrel/squirrelsighting_form.html', context)
+
 
 class SightingUpdateView(UpdateView):
     model = SquirrelSighting
     form_class = SightingForm
+    pk_url_kwarg = 'unique_squirrel_id'
     success_url = '/sightings/'
     
