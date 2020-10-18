@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import JsonResponse
@@ -106,6 +106,10 @@ def update_sighting(request, **kwargs):
             }
         return render(request, 'squirrel/squirrelsighting_form.html', context)
 
+class SightingAddView(CreateView):
+    model = SquirrelSighting
+    form_class = SightingForm
+    success_url = '/sightings/'
 
 class SightingUpdateView(UpdateView):
     model = SquirrelSighting
