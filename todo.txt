@@ -1,4 +1,4 @@
 - Save Django secret key as an env variable
-- Banner on top of map (make map.html extend base.html)
 - Split sightings list into pages?
 - Successful sighting update message?
+

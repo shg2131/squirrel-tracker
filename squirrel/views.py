@@ -110,12 +110,14 @@ class SightingAddView(CreateView):
     model = SquirrelSighting
     form_class = SightingForm
     success_url = '/sightings/'
+    template_name = 'squirrel/add.html'
 
 class SightingUpdateView(UpdateView):
     model = SquirrelSighting
     form_class = SightingForm
     pk_url_kwarg = 'unique_squirrel_id'
     success_url = '/sightings/'
+    template_name = 'squirrel/update.html'
 
     def get_object(self):
         return self.model.objects.filter(unique_squirrel_id=self.kwargs['unique_squirrel_id']).first()
