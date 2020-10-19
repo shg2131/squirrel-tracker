@@ -7,8 +7,6 @@ from django.http import JsonResponse
 from .models import SquirrelSighting
 from .forms import SightingForm
 
-import random
-
 def index(request):
     return render(request, 'squirrel/index.html', {})
 

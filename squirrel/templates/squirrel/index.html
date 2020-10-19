@@ -41,17 +41,17 @@
       <h3 class="masthead-brand">Squirrel Tracker</h3>
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link active" href="#">Home</a>
+	<a class="nav-link" href="{% url 'squirrel:map' %}">Map</a>
+	<a class="nav-link" href="{% url 'squirrel:sightings-list' %}">List</a>
+	<a class="nav-link" href="{% url 'squirrel:add' %}">Add</a>
+	<a class="nav-link" href="{% url 'squirrel:stats' %}">Stats</a>
       </nav>
     </div>
   </header>
 
   <main role="main" class="inner cover">
     <h1 class="cover-heading">Squirrel Tracker</h1>
-    <p class="lead">Tracking Central Park's squirrel population in unnecessarily exhaustive detail</p>
-    <p class="lead">
-    <a href="{% url 'squirrel:map' %}" class="btn btn-lg btn-secondary">Sightings Map</a>
-    <a href="{% url 'squirrel:sightings-list' %}" class="btn btn-lg btn-secondary">Sightings List</a>
-    </p>
+    <p class="lead">Tracking Central Park's squirrel population in unnecessary detail.</p>
   </main>
 
   <footer class="mastfoot mt-auto">
