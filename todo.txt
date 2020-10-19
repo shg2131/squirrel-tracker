@@ -2,3 +2,4 @@
 - Split sightings list into pages?
 - Successful sighting update message?
 - Make navbar buttons active on correct page.
+- README FILE

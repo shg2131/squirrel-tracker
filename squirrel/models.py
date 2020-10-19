@@ -10,7 +10,7 @@ class SquirrelSighting(models.Model):
         validators=[MinValueValidator(-180), MaxValueValidator(180)],
     )
 
-    unique_squirrel_id = models.CharField(max_length=50)
+    unique_squirrel_id = models.CharField(max_length=20)
 
     AM = 'AM'
     PM = 'PM'
