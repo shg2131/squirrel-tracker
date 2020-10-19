@@ -20,11 +20,8 @@ def map(request):
 
 class SightingsListView(ListView):
     model = SquirrelSighting
-    paginated_by = 10 #100
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    paginate_by = 25 #100
+    
 
 def sightings_detail(request, unique_squirrel_id):
     print(unique_squirrel_id)
@@ -35,6 +32,7 @@ def sightings_detail(request, unique_squirrel_id):
         'sighting': sightings_qs[0],
     }
     return render(request, 'squirrel/squirrelsighting_detail.html', context)
+
 
 def stats(request):
     sightings = SquirrelSighting.objects.all()
@@ -88,6 +86,7 @@ def add_sighting(request):
             }
         return render(request, 'squirrel/add.html', context)
 
+
 def update_sighting(request, **kwargs):
     sighting = SquirrelSighting.objects.filter(unique_squirrel_id=kwargs['unique_squirrel_id']).first()
     if request.method == 'POST':
@@ -104,11 +103,13 @@ def update_sighting(request, **kwargs):
             }
         return render(request, 'squirrel/squirrelsighting_form.html', context)
 
+
 class SightingAddView(CreateView):
     model = SquirrelSighting
     form_class = SightingForm
     success_url = '/sightings/'
     template_name = 'squirrel/add.html'
+
 
 class SightingUpdateView(UpdateView):
     model = SquirrelSighting
