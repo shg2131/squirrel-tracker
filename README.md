@@ -13,10 +13,10 @@ The website allows the user to:
 Additionally, we have implemented the following management commands:
 
 - import_squirrel_data
-    - Usage: $ python manage.py import_squirrel_data /path/to/file.csv
+    - Usage: ```$ python manage.py import_squirrel_data /path/to/file.csv```
     - Imports data from the given csv file into a sqlite3 database
 - export_squirrel_data
-    - Usage: $ python manage.py export_squirrel_data /path/to/file.csv
+    - Usage: ```$ python manage.py export_squirrel_data /path/to/file.csv```
     - Exports data from the sqlite3 database into a csv file at the specified path
 
 Created by Simon Gee and Omar Al Ismaili for IEOR 4501 at Columbia University.
