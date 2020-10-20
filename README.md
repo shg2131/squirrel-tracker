@@ -10,6 +10,15 @@ The website allows the user to:
 - Add a sighting of their own 
 - View a few aggregated statistics about the sightings
 
+Additionally, we have implemented the following management commands:
+
+- import_squirrel_data
+    - Usage: $ python manage.py import_squirrel_data /path/to/file.csv
+    - Imports data from the given csv file into a sqlite3 database
+- export_squirrel_data
+    - Usage: $ python manage.py export_squirrel_data /path/to/file.csv
+    - Exports data from the sqlite3 database into a csv file at the specified path
+
 Created by Simon Gee and Omar Al Ismaili for IEOR 4501 at Columbia University.
 
 Group Name: Project 54
