@@ -5,10 +5,8 @@
 {% block title %} All Sightings {% endblock %}
 
 {% block main %}
-  <body>
-
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Sightings List</h1>
+            <h1>Sightings List</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
         	<button class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'squirrel:add' %}'">
@@ -35,11 +33,11 @@
               </thead>
               <tbody>
         	{% for squirrel in object_list %}
-        		<tr style="height:40px">
-                 	<td>{{ squirrel.unique_squirrel_id }}</td>
-                 	<td>{{ squirrel.date }}</td>
-                 	<td><a href="{% url 'squirrel:update' squirrel.unique_squirrel_id %}">Update</a></td>
-        		</tr>
+        	  <tr>
+                    <td>{{ squirrel.unique_squirrel_id }}</td>
+                    <td>{{ squirrel.date }}</td>
+                    <td><a href="{% url 'squirrel:update' squirrel.unique_squirrel_id %}">Update</a></td>
+        	  </tr>
     		{% endfor %}
               </tbody>
             </table>
@@ -49,8 +47,8 @@
 <center>
     <span class="step-links">
       {% if page_obj.has_previous %}
-      <a href="?page=1">&laquo; first</a>
-      <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      <a href="?page=1">&laquo; First</a>
+      <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
       {% endif %}
   
       <span class="current">
@@ -58,8 +56,8 @@
       </span>
   
       {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">next</a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      <a href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
       {% endif %}
     </span>
 </center>

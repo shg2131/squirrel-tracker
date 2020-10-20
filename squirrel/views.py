@@ -20,7 +20,7 @@ def map(request):
 
 class SightingsListView(ListView):
     model = SquirrelSighting
-    paginate_by = 25 #100
+    paginate_by = 50 #100
     
 
 def sightings_detail(request, unique_squirrel_id):
@@ -39,7 +39,8 @@ def stats(request):
     
     # Total numer of sightings
     num_sightings = len(sightings)
-    avg_per_day = num_sightings / len(set([s.date for s in sightings]))
+    unique_dates = set([s.date for s in sightings])
+    avg_per_day = num_sightings / len(unique_dates)
     # avg longitude
     # avg latitude
     avg_long = sum([s.longitude for s in sightings]) / num_sightings
@@ -55,8 +56,14 @@ def stats(request):
     pm_pct = sum([1 if s.shift == "PM" else 0 for s in sightings]) / num_sightings * 100
     na_pct = 100 - am_pct - pm_pct
 
-    # % Approaches vs Indifferent vs Runs From
     # Line graph with how many spotted on each day
+    sightings_by_date = {}
+    for s in sorted(sightings, key=(lambda s: s.date)):
+        if s.date in sightings_by_date.keys():
+            sightings_by_date[s.date] += 1
+        else:
+            sightings_by_date[s.date] = 1
+
     context = {
         'num_sightings': num_sightings,
         'avg_per_day': round(avg_per_day, 2),
@@ -67,6 +74,7 @@ def stats(request):
         'other_num': other_num,
         'am_pct': round(am_pct, 2),
         'pm_pct': round(pm_pct, 2),
+        'sightings_by_date': sightings_by_date,
     }
     return render(request, 'squirrel/stats.html', context)
 
