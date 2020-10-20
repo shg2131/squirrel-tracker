@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class SquirrelSighting(models.Model):
     latitude = models.FloatField(
-        validators=[MinValueValidator(-180), MaxValueValidator(180)],    
+        validators=[MinValueValidator(-90), MaxValueValidator(90)],    
     )
 
     longitude = models.FloatField(
