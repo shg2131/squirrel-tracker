@@ -6,7 +6,7 @@ The website allows the user to:
  
 - View a map of 100 unique squirrel sightings at ```/map```
 - View a list of all recorded sightings at ```/sightings```
-- Update an existing sighting at ```/sightings/<unique-squirrel-id>
+- Update an existing sighting at ```/sightings/<unique-squirrel-id>```
 - Add a sighting of their own at ```/sightings/add```
 - View a few aggregated statistics about the sightings at ```/sightings/stats```
 
