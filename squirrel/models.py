@@ -60,6 +60,7 @@ class SquirrelSighting(models.Model):
         help_text='Whether squirrel was sighted on or above ground level',
         choices=LOCATION_CHOICES,
         default=BLANK,
+        blank=True,
     )
 
     specific_location = models.TextField(blank=True)
