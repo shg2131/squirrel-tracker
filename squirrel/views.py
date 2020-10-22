@@ -20,7 +20,7 @@ def map(request):
 
 class SightingsListView(ListView):
     model = SquirrelSighting
-    paginate_by = 50 #100
+#     paginate_by = 50 #100
     
 
 def sightings_detail(request, unique_squirrel_id):
